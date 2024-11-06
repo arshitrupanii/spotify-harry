@@ -13,7 +13,7 @@ body{
 
 .left {
     width: 22vw;
-    height: 104vw;
+    height: auto;
     position: fixed;
 }
 
@@ -74,7 +74,7 @@ body{
 
 .heading h3 {
     font-weight: 800;
-    width: 300px;
+    width: auto;
     margin-left: 16px;
     color: gray;
 }
@@ -107,8 +107,8 @@ body{
 }
 
 .footer {
+    margin-top: 15px;
     padding: 0;
-    margin-top: 49%;
     display: flex;
     flex-wrap: wrap;
     margin-bottom: 20px;
@@ -243,9 +243,17 @@ body{
 }
 
 .playbar{
-    background-color: red;
-    width: 78%;
+    gap: 5px;
+    background-color:#1f1f1f;
+    width: 72%;
+    border: 1px solid rgb(62, 62, 62);
+    border-radius: 15px;
+    margin-left: 15px;
     position: fixed;
     bottom: 25px;
-    height: 40px;
+    height: 50px;
+}
+
+.playbar img{
+    width: 25px;
 }
