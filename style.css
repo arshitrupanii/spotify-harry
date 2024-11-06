@@ -18,9 +18,8 @@ body{
 }
 
 .right {
-    height: fit-content;
     margin-left: 22vw;
-    height: 100vw;
+    height: auto;
     margin-top: 10px;
     border-radius: 10px;
     padding: 10px;
@@ -41,7 +40,7 @@ body{
 }
 
 ._library {
-    height: 30%;
+    height: auto;
     color: white;
 }
 
