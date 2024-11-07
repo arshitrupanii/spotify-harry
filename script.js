@@ -25,8 +25,6 @@ async function main(){
         let songName = element.replaceAll('%20', ' ').split('songs/')[1];
         songlist.innerHTML += `<li>${songName}</li>`;
     }
-    
-
     let audio = new Audio(song[2])
     // await audio.play()
 
@@ -34,7 +32,6 @@ async function main(){
         let duration = audio.duration;
         console.log(duration);
     })
-
 }
 
 main()
