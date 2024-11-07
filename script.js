@@ -19,14 +19,22 @@ async function main(){
     let song = await getsongs()
     console.log(song);
 
-    let audio = new Audio(song[0])
-    try {
-        await audio.play();
-        console.log("Playing:", songs[0]);
-    } catch (error) {
-        console.error("Error playing audio:", error);
-        alert("Please click 'Play' to start audio.");
+    let songlist = document.querySelector('.songlist').getElementsByTagName('ol')[0];
+
+    for (const element of song) {
+        let songName = element.replaceAll('%20', ' ').split('songs/')[1];
+        songlist.innerHTML += `<li>${songName}</li>`;
     }
+    
+
+    let audio = new Audio(song[2])
+    // await audio.play()
+
+    audio.addEventListener("loadeddata" ,() => {
+        let duration = audio.duration;
+        console.log(duration);
+    })
+
 }
 
 main()

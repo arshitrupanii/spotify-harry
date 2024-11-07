@@ -2,6 +2,10 @@
     border: 2px solid red;
 }
 
+.gap{
+    gap: 10px;
+}
+
 .flex{
     display: flex;
 }
