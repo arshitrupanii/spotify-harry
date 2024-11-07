@@ -13,11 +13,16 @@ async function getsongs() {
         if(element.href.endsWith('.mp3')){
             songs.push(element.href)
         }
-        
     }
-    console.log(anchor);
-    console.log(songs);
-
+    return songs;
 }
 
-getsongs()
+async function main(){
+    let song = await getsongs()
+    console.log(song);
+
+    let audio = new Audio(song[0])
+    // audio.play()
+}
+
+main()
