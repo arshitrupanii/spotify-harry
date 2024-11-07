@@ -1,5 +1,3 @@
-console.log("start js first project");
-
 async function getsongs() {
     let song_location = await fetch("http://127.0.0.1:5500/songs/")
     let responce = await song_location.text()
@@ -22,7 +20,13 @@ async function main(){
     console.log(song);
 
     let audio = new Audio(song[0])
-    // audio.play()
+    try {
+        await audio.play();
+        console.log("Playing:", songs[0]);
+    } catch (error) {
+        console.error("Error playing audio:", error);
+        alert("Please click 'Play' to start audio.");
+    }
 }
 
 main()
