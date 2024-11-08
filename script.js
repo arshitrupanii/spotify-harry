@@ -8,27 +8,43 @@ async function getsongs() {
 
     for (let i = 0; i < anchor.length; i++) {
         const element = anchor[i];
-        if(element.href.endsWith('.mp3')){
+        if (element.href.endsWith('.mp3')) {
             songs.push(element.href)
         }
     }
     return songs;
 }
 
-async function main(){
+async function main() {
     let song = await getsongs()
-    console.log(song);
 
     let songlist = document.querySelector('.songlist').getElementsByTagName('ol')[0];
 
+    // show all the song in playlist  
     for (const element of song) {
         let songName = element.replaceAll('%20', ' ').split('songs/')[1];
-        songlist.innerHTML += `<li>${songName}</li>`;
+        songlist.innerHTML += `
+                        <li class="flex align-item pointer">
+                            <div class="flex align-item">
+                                <img class="invert" src="https://img.icons8.com/?size=100&id=q2W9owAsM5vd&format=png&  color=FFFFFF" alt="">
+                                <div class="info">
+                                    <div class="song_name">${songName}</div>
+                                    <div class="artist_name">artist name </div>
+                                </div>
+                            </div>
+
+                            <div class="flex align-item gap">
+                                <img style="width: 32px;" src="https://img.icons8.com/?size=100&id=36067&format=png&color=FFFFFF" alt="">
+                            </div>
+                        </li>
+        
+        `;
     }
+
     let audio = new Audio(song[2])
     // await audio.play()
 
-    audio.addEventListener("loadeddata" ,() => {
+    audio.addEventListener("loadeddata", () => {
         let duration = audio.duration;
         console.log(duration);
     })
