@@ -23,15 +23,20 @@ async function getsongs() {
 
 // for play songs
 const playmusic = (path) => {
+    play_pause_footer.src = 'svg/play.svg'
     current_song.src =`/songs/${path}`
     current_song.play()
+
+
+    document.querySelector('.songposter').src = 'https://img.icons8.com/?size=100&id=q2W9owAsM5vd&format=png&  color=FFFFFF' 
+    document.querySelector('.songname').innerHTML = path.replaceAll(('.mp3'), '')
+    document.querySelector('.songduration').innerHTML = `00:00 `
 }
 
 
 // this is the main function
 async function main() {
     let song = await getsongs()
-    let play = document.getElementById('play');
 
     let songlist = document.querySelector('.songlist').getElementsByTagName('ol')[0];
 
@@ -71,13 +76,11 @@ async function main() {
         e.addEventListener('click', () => {
             if(current_song.paused){
                 play_pause_sidebar_btn.src = 'https://img.icons8.com/?size=100&id=36268&format=png&color=FFFFFF'
-                play_pause_footer.src = 'svg/play.svg'
                 playmusic(song_name)
             }
 
             else{
                 play_pause_sidebar_btn.src = 'https://img.icons8.com/?size=100&id=36067&format=png&color=FFFFFF'
-                play_pause_footer.src = 'svg/pause.svg'
                 current_song.pause()
             }
         })
@@ -89,13 +92,11 @@ async function main() {
     
     play_pause_footer.addEventListener('click', () => {
         if(current_song.paused){
-            play_pause_sidebar_btn.src = 'https://img.icons8.com/?size=100&id=36268&format=png&color=FFFFFF'
             play_pause_footer.src = 'svg/play.svg'
             current_song.play()
         }
 
         else{
-            play_pause_sidebar_btn.src = 'https://img.icons8.com/?size=100&id=36067&format=png&color=FFFFFF'
             play_pause_footer.src = 'svg/pause.svg'
             current_song.pause()
         }
