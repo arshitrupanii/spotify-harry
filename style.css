@@ -1,5 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
+:root {
+    --dark-bg: #121212;
+    --lighter-dark: #1f1f1f;
+    --light-text: gray;
+    --primary-text: white;
+}
+
 
 * {
     margin: 0;
@@ -13,30 +20,26 @@ body{
 
 .left {
     width: 25vw;
-    position: sticky;
+    position: fixed;
     height : auto;
+    overflow-y: auto;
 }
 
 .right {
-    position: absolute;
-    /* margin-left: 22vw; */
+    margin-left: 25vw;
+    overflow-y: auto;
     height: auto;
     margin-top: 10px;
     border-radius: 10px;
     padding: 10px;
-    background-color: #121212;
+    background-color: var(--dark-bg);
     width: 74vw;
-    position: relative;
 }
 
 .home-logo {
     margin-left: 10px;
     margin-top: 5px;
     width: 110px;
-}
-
-.home{
-
 }
 
 .home, ._library {
@@ -72,6 +75,7 @@ body{
 }
 
 .heading {
+    justify-content: space-between;
     padding: 5px;
     margin-bottom: 20px;
     border-radius: 50px;
@@ -91,7 +95,7 @@ body{
 }
 
 .create {
-    background-color: #1f1f1f;
+    background-color: var(--lighter-dark);
     padding: 18px;
     font-weight: 700;
     color: white;
@@ -151,7 +155,7 @@ body{
     display: flex;
     justify-content: center;
     background-color: black;
-    border: 1px solid #1f1f1f;
+    border: 1px solid var(--lighter-dark);
     margin-left: 5px;
     height: 37px;
     border-radius: 50px;
@@ -185,9 +189,10 @@ body{
 }
 
 .cards {
+    justify-content: center;
     object-fit: cover;
     width: auto;
-    background-color: #1f1f1f;
+    background-color: var(--lighter-dark);
     height: auto;
     margin-top: 60px;
     border-radius: 10px;
