@@ -14,26 +14,37 @@
     font-family: 'Roboto', sans-serif;
 }
 
-body{
+/* comment is made by tabnine */
+body {
     background-color: black;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Prevent body from scrolling */
 }
 
+.container {
+    display: flex;
+    height: 100vh; /* Full viewport height */
+    overflow: hidden; /* Prevent container from scrolling */
+}
 .left {
     width: 25vw;
-    position: fixed;
-    height : auto;
-    overflow-y: auto;
+    height: 100%; /* Full height of the container */
+    overflow-y: auto; /* Enable vertical scrolling */
+    position: fixed; /* Fix the left sidebar */
+    left: 0;
+    top: 0;
 }
 
 .right {
-    margin-left: 25vw;
-    overflow-y: auto;
-    height: auto;
-    margin-top: 10px;
+    margin-left: 25vw; /* Match the width of .left */
+    width: 75vw; /* Remaining width */
+    height: auto; /* Full viewport height */
+    overflow-y: auto; /* Enable vertical scrolling */
     border-radius: 10px;
     padding: 10px;
     background-color: var(--dark-bg);
-    width: 74vw;
+    box-sizing: border-box; /* Include padding in the width calculation */
 }
 
 .home-logo {
@@ -255,9 +266,27 @@ body{
     font-size: small;
 }
 
+
+.songlist ol {
+    margin: 20px 0px;
+}
+
+.songlist ol li{ 
+    list-style-type: none;
+    margin: 10px 0px ;
+    border: 1px solid rgb(101, 101, 101,0.3);
+    border-radius: 10px;
+    padding: 0px 5px;
+    justify-content: space-between;
+}
+
+.songlist ol li img{
+    width: 58px;
+}
+
 .playbar{
-    gap: 5px;
-    background-color:gray;
+    gap: 15px;
+    background-color: rgb(6, 5, 5,0.5);
     width: 72%;
     border: 1px solid rgb(62, 62, 62);
     border-radius: 15px;
@@ -268,33 +297,30 @@ body{
 }
 
 .playbar img{
-    width: 25px;
-}
-
-.songlist ol {
-    margin: 20px 0px;
-}
-
-.songlist ol li{ 
-    list-style-type: none;
-    margin: 10px 0px ;
-    border: 1px solid rgb(101, 101, 101,0.5);
-    border-radius: 10px;
-    padding: 0px 5px;
-    justify-content: space-between;
-}
-
-.songlist ol li img{
-    width: 58px;
+    position: relative;
+    width: 19px;
+    bottom: 3px;
 }
 
 .seekbar{
-    width: 98%;
+    width: 96%;
     height: 1px;
-    background-color: gray;
+    background-color: white;
     border-radius: 5px;
-    border: 2px solid red;
+    border: 1px solid white;
     position: absolute;
-    bottom: 1px;
+    bottom: 10px;
     /* margin-left: 15px; */
+}
+
+.circle{
+    width: 16px;
+    height: 16px;
+    /* border: 1px solid white; */
+    position: absolute;
+    top: -8px;
+    left: -3px;
+    background-color: white;
+    border-radius: 50%;
+    transition: left 0.5s;
 }
