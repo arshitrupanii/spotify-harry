@@ -16,8 +16,20 @@
     <!-- <img src="/svg/previous.svg" alt="no"> -->
 
     <script>
-        let pause_play = document.getElementById('play');
-        let play = document.getElementById('play');
+        async function data() {
+            let data = await fetch('http://127.0.0.1:5500/songs_photo/')
+            let responce = await data.text()
+            console.log(responce);
+          
+
+        }
+
+        async function main(params) {
+            await data();
+
+        }
+
+        main()
     </script>
 
 

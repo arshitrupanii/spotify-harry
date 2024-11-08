@@ -28,9 +28,15 @@ const playmusic = (path) => {
     current_song.play()
 
 
-    document.querySelector('.songposter').src = 'https://img.icons8.com/?size=100&id=q2W9owAsM5vd&format=png&  color=FFFFFF' 
     document.querySelector('.songname').innerHTML = path.replaceAll(('.mp3'), '')
-    document.querySelector('.songduration').innerHTML = `00:00 `
+}
+
+function convertSeconds(seconds) {
+    const minutes = Math.floor(seconds / 60);
+    const remainingSeconds = Math.floor(seconds % 60);
+    // Format seconds to always be two digits (e.g., 05)
+    const formattedSeconds = remainingSeconds < 10 ? `0${remainingSeconds}` : remainingSeconds;
+    return `${minutes}:${formattedSeconds}/${minutes}:${second}`;
 }
 
 
@@ -100,6 +106,16 @@ async function main() {
             play_pause_footer.src = 'svg/pause.svg'
             current_song.pause()
         }
+    })
+
+    current_song.addEventListener('timeupdate', () => {
+        console.log(current_song.duration, current_song.currentTime);
+
+        document.querySelector('.songduration').innerHTML = `${convertSeconds(current_song.currentTime)}/${current_song.duration / 60}`
+    })
+
+    document.querySelectorAll('.card_photo').forEach((e)=>{
+        // e.src = 'songs_photo/Aaj Ki Raat/71764_4.jpg'
     })
 
 }
