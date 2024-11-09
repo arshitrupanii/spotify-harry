@@ -82,12 +82,12 @@ async function main() {
         // attaching evenlistener to all songs
         e.addEventListener('click', () => {
             if(current_song.paused){
-                play_pause_sidebar_btn.src = 'https://img.icons8.com/?size=100&id=36268&format=png&color=FFFFFF'
+       
                 playmusic(song_name)
             }
 
             else{
-                play_pause_sidebar_btn.src = 'https://img.icons8.com/?size=100&id=36067&format=png&color=FFFFFF'
+                
                 play_pause_footer.src = 'svg/pause.svg'
 
                 current_song.pause()
@@ -112,15 +112,27 @@ async function main() {
     })
 
     current_song.addEventListener('timeupdate', () => {
-        console.log(current_song.duration, current_song.currentTime);
-
-        document.querySelector('.songduration').innerHTML = `${convertSeconds(current_song.currentTime) / ${current_song.duration}:${current_song.durat}`
+        document.querySelector('.songduration').innerHTML = `${convertSeconds(current_song.currentTime)}`
+        document.querySelector('.circle').style.left = current_song.currentTime/current_song.duration * 100 + '%'
     })
 
-    document.querySelectorAll('.card_photo').forEach((e)=>{
-        // e.src = 'songs_photo/Aaj Ki Raat/71764_4.jpg'
+    // for scrolling seekbar circle
+    document.querySelector('.seekbar').addEventListener('click', (e) => {
+        let percent = (e.offsetX / e.target.getBoundingClientRect().width) * 100
+        document.querySelector('.circle').style.left = percent + '%'
+        current_song.currentTime = current_song.duration * (percent / 100)
     })
 
+    document.querySelector('.humburg').addEventListener('click', (e) => {
+        document.querySelector('.left').style.left = "0"
+        document.querySelector('.left').style.backgroundColor = 'black'
+        document.querySelector('.left').style.transition = "0.5s"
+    })
+
+    document.querySelector('.cross').addEventListener('click', (e) => {
+        document.querySelector('.left').style.backgroundColor = 'white'
+        document.querySelector('.left').style.transition = "0.5s"
+    })
 }
 
 main()
