@@ -36,13 +36,14 @@ function convertSeconds(seconds) {
     const remainingSeconds = Math.floor(seconds % 60);
     // Format seconds to always be two digits (e.g., 05)
     const formattedSeconds = remainingSeconds < 10 ? `0${remainingSeconds}` : remainingSeconds;
-    return `${minutes}:${formattedSeconds}/${minutes}:${second}`;
+    return `${minutes}:${formattedSeconds}`;
 }
 
 
 // this is the main function
 async function main() {
     let song = await getsongs()
+    current_song.src = song[0]
 
     let songlist = document.querySelector('.songlist').getElementsByTagName('ol')[0];
 
@@ -87,6 +88,8 @@ async function main() {
 
             else{
                 play_pause_sidebar_btn.src = 'https://img.icons8.com/?size=100&id=36067&format=png&color=FFFFFF'
+                play_pause_footer.src = 'svg/pause.svg'
+
                 current_song.pause()
             }
         })
@@ -111,7 +114,7 @@ async function main() {
     current_song.addEventListener('timeupdate', () => {
         console.log(current_song.duration, current_song.currentTime);
 
-        document.querySelector('.songduration').innerHTML = `${convertSeconds(current_song.currentTime)}/${current_song.duration / 60}`
+        document.querySelector('.songduration').innerHTML = `${convertSeconds(current_song.currentTime) / ${current_song.duration}:${current_song.durat}`
     })
 
     document.querySelectorAll('.card_photo').forEach((e)=>{
