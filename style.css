@@ -296,6 +296,9 @@ body {
 }
 
 .songlist ol li img{
+    margin: 10px;
+    object-fit: cover;
+    border-radius: 10px;
     width: 58px;
 }
 

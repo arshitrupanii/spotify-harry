@@ -60,19 +60,19 @@ async function main() {
         songlist.innerHTML += `
                         <li class="flex align-item pointer">
                             <div class="flex align-item">
-                                <img class="invert" src="https://img.icons8.com/?size=100&id=q2W9owAsM5vd&format=png&  color=FFFFFF" alt="">
+                                <img class="library_icon" src="library_photo/${songName}.jpg" alt="">
                                 <div class="info">
                                     <div class="song_name">${songName}</div>
                                     <div class="artist_name">artist name </div>
                                 </div>
                             </div>
-
                             <div class="flex align-item gap">
                                 <img style="width: 32px;" src="https://img.icons8.com/?size=100&id=36067&format=png&color=FFFFFF" alt="">
                             </div>
                         </li>
         `;
     }
+
 
     // audio.addEventListener("loadeddata", () => {
     //     let duration = audio.duration;
@@ -88,6 +88,7 @@ async function main() {
         // attaching evenlistener to all songs
         e.addEventListener('click', () => {
             if(current_song.paused){       
+                
                 playmusic(song_name)
             }
 
