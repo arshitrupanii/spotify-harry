@@ -31,6 +31,13 @@ const playmusic = (path) => {
     document.querySelector('.songname').innerHTML = path.replaceAll(('.mp3'), '')
 }
 
+// for home page song cover page change 
+let i = 1;
+document.querySelectorAll('.card_photo').forEach((element) => {
+    element.src = `cover_page/cover ${i++}.jpg`    
+})
+// console.log(photo);
+
 function convertSeconds(seconds) {
     const minutes = Math.floor(seconds / 60);
     const remainingSeconds = Math.floor(seconds % 60);
@@ -80,15 +87,12 @@ async function main() {
         
         // attaching evenlistener to all songs
         e.addEventListener('click', () => {
-            if(current_song.paused){
-       
+            if(current_song.paused){       
                 playmusic(song_name)
             }
 
             else{
-                
                 play_pause_footer.src = 'svg/pause.svg'
-
                 current_song.pause()
             }
         })
@@ -96,7 +100,6 @@ async function main() {
         // attaching even listener to play pause song
         
     })
-
     
     play_pause_footer.addEventListener('click', () => {
         if(current_song.paused){
