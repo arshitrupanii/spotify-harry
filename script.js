@@ -64,7 +64,6 @@ async function main() {
                                 <img style="width: 32px;" src="https://img.icons8.com/?size=100&id=36067&format=png&color=FFFFFF" alt="">
                             </div>
                         </li>
-        
         `;
     }
 
