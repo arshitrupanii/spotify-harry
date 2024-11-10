@@ -82,8 +82,6 @@ async function main() {
     // play the song when click on song name
     Array.from(document.querySelector('.songlist').getElementsByTagName('li')).forEach((e) => {
         let song_name = e.getElementsByClassName('info')[0].getElementsByClassName('song_name')[0].innerText;
-    
-        let play_pause_sidebar_btn = e.getElementsByClassName('flex align-item gap')[0].getElementsByTagName('img')[0];
         
         // attaching evenlistener to all songs
         e.addEventListener('click', () => {

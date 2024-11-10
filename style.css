@@ -337,7 +337,7 @@ body {
     /* border: 1px solid white; */
     position: absolute;
     top: -5px;
-    left: -1px;
+    left: -3px;
     background-color: white;
     border-radius: 50%;
     transition: left 0.5s;
