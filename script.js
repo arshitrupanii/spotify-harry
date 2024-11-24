@@ -1,11 +1,12 @@
 const current_song = new Audio();
+
 // this is footer play/pause button
 let play_pause_footer = document.getElementsByClassName('playbar')[0].getElementsByClassName('play_pause')[0].getElementsByTagName('img')[0];
 
 
 // getting all songs from the server location
 async function getsongs() {
-    let song_location = await fetch("http://127.0.0.1:5500/songs/")
+    let song_location = await fetch("http://127.0.0.1:5501/app_project/spotify-harry/songs/")
     let responce = await song_location.text()
     let div = document.createElement('div')
     div.innerHTML = responce
@@ -23,12 +24,11 @@ async function getsongs() {
 
 // for play songs
 const playmusic = (path) => {
-    play_pause_footer.src = 'svg/play.svg'
-    current_song.src =`/songs/${path}`
+    play_pause_footer.src = 'svg/play.svg'  
+    current_song.src = `http://127.0.0.1:5501/app_project/spotify-harry/songs/${path}`;
     current_song.play()
 
-
-    document.querySelector('.songname').innerHTML = path.replaceAll(('.mp3'), '')
+    let song_name_footer = document.querySelector('.songname').innerHTML = path
 }
 
 // for home page song cover page change 
@@ -45,6 +45,7 @@ function convertSeconds(seconds) {
     const formattedSeconds = remainingSeconds < 10 ? `0${remainingSeconds}` : remainingSeconds;
     return `${minutes}:${formattedSeconds}`;
 }
+
 
 
 // this is the main function
@@ -74,22 +75,16 @@ async function main() {
     }
 
 
-    // audio.addEventListener("loadeddata", () => {
-    //     let duration = audio.duration;
-    //     console.log(duration);
-    // })    
-
     // play the song when click on song name
     Array.from(document.querySelector('.songlist').getElementsByTagName('li')).forEach((e) => {
         let song_name = e.getElementsByClassName('info')[0].getElementsByClassName('song_name')[0].innerText;
         
         // attaching evenlistener to all songs
         e.addEventListener('click', () => {
-            if(current_song.paused){       
-                
+            if(current_song.paused){      
                 playmusic(song_name)
             }
-
+            
             else{
                 play_pause_footer.src = 'svg/pause.svg'
                 current_song.pause()
