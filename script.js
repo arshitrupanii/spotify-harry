@@ -31,6 +31,14 @@ const playmusic = (path) => {
     let song_name_footer = document.querySelector('.songname').innerHTML = path
 }
 
+// Function to get the next song
+const getNextSong = (currentSong, songs) => {
+    const currentIndex = songs.findIndex(song => song.includes(currentSong));
+    const nextIndex = (currentIndex + 1) % songs.length;
+    return songs[nextIndex].split('songs/')[1];
+}
+
+
 // for home page song cover page change 
 let i = 1;
 document.querySelectorAll('.card_photo').forEach((element) => {
@@ -78,6 +86,7 @@ async function main() {
     // play the song when click on song name
     Array.from(document.querySelector('.songlist').getElementsByTagName('li')).forEach((e) => {
         let song_name = e.getElementsByClassName('info')[0].getElementsByClassName('song_name')[0].innerText;
+
         
         // attaching evenlistener to all songs
         e.addEventListener('click', () => {
@@ -91,10 +100,11 @@ async function main() {
             }
         })
 
-        // attaching even listener to play pause song
         
     })
     
+  
+    // attaching even listener to play pause song
     play_pause_footer.addEventListener('click', () => {
         if(current_song.paused){
             play_pause_footer.src = 'svg/play.svg'
@@ -111,6 +121,13 @@ async function main() {
         document.querySelector('.songduration').innerHTML = `${convertSeconds(current_song.currentTime)}`
         document.querySelector('.circle').style.left = current_song.currentTime/current_song.duration * 100 + '%'
     })
+
+    // Add event listener for when song ends
+    current_song.addEventListener('ended', () => {
+        const currentSongName = document.querySelector('.songname').innerHTML;
+        const nextSongName = getNextSong(currentSongName, song);
+        playmusic(nextSongName);
+    });
 
     // for scrolling seekbar circle
     document.querySelector('.seekbar').addEventListener('click', (e) => {
