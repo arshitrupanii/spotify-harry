@@ -6,7 +6,7 @@ let play_pause_footer = document.getElementsByClassName('playbar')[0].getElement
 
 // getting all songs from the server location
 async function getsongs() {
-    let song_location = await fetch("http://127.0.0.1:5501/app_project/spotify-harry/songs/")
+    let song_location = await fetch("/songs/")
     let responce = await song_location.text()
     let div = document.createElement('div')
     div.innerHTML = responce
@@ -25,7 +25,7 @@ async function getsongs() {
 // for play songs
 const playmusic = (path) => {
     play_pause_footer.src = 'svg/play.svg'  
-    current_song.src = `http://127.0.0.1:5501/app_project/spotify-harry/songs/${path}`;
+    current_song.src = `/songs/${path}`;
     current_song.play()
 
     let song_name_footer = document.querySelector('.songname').innerHTML = path
